@@ -75,7 +75,14 @@ function formatLength(arr) {
 function formatLocation(floor, room) {
     return `Floor: ${floor} | Room: ${room}`
 }
-
+function shuffleArray(array) {
+    let arrCopy = [...array]
+    for (let i = arrCopy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arrCopy[i], arrCopy[j]] = [arrCopy[j], arrCopy[i]];
+    }
+    return arrCopy
+}
 
 module.exports = {
     formatTitle, 
@@ -84,5 +91,6 @@ module.exports = {
     formatTime, 
     convertLength, 
     formatLength, 
-    formatLocation
+    formatLocation,
+    shuffleArray
 }

@@ -1,7 +1,8 @@
  const {
     formatTitle, 
     shortenBio, 
-    convertLength
+    convertLength,
+    shuffleArray
 } = require('./public/utils')
 
 let testData = {
@@ -62,11 +63,11 @@ let testData = {
 
  describe('toBe vs toEqual', ()=> {
 
-  test('toBe', ()=> {
-    const myObj = {pizza:4}
-    const myObjTwo = {pizza:4}
-    expect(myObj).toBe(myObjTwo)
-   })
+  // test('toBe', ()=> {
+  //   const myObj = {pizza:4}
+  //   const myObjTwo = {pizza:4}
+  //   expect(myObj).toBe(myObjTwo)
+  //  })
 
    test('toEqual', ()=> {
     const myObj = {myNum:4}
@@ -74,3 +75,23 @@ let testData = {
     expect(myObj).toEqual(myObjTwo)
    })
  })
+
+
+ const petsArr = [{'myPet':'hamster'},{'myPet':'cat'},{'myPet':'lizard'}]
+const numArr = [2, 5, 9, 13, 7]
+const strArr = ['almost','the','last','assessment']
+
+describe('shuffleArray should', () => {
+    test('return an array', ()=> {
+        expect(Array.isArray(shuffleArray(petsArr))).toBe(true)
+        expect(Array.isArray(shuffleArray(numArr))).toBe(true)
+        expect(Array.isArray(shuffleArray(strArr))).toBe(true)
+    })
+
+    test('the input array and the returned array should have the same length', ()=> {
+        expect(shuffleArray(petsArr)).toHaveLength(petsArr.length)
+        expect(shuffleArray(numArr).length).toEqual(numArr.length)
+        expect(shuffleArray(strArr)).toHaveLength(strArr.length)
+    })
+
+})
